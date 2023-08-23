@@ -44,11 +44,13 @@ def upload():
   file_path = os.path.join('static', 'uploads', filename)
   file.save(file_path)
 
-  #deletes any previous runs from rins/detect/exp/
-  if len(os.listdir(os.path.join('runs','detect'))) == 2:
+  if os.path.exists("runs") == False:
+     pass
+  #deletes any previous runs from runs/detect/exp/
+  elif len(os.listdir(os.path.join('runs','detect'))) == 2:
     os.remove(os.path.join('runs', 'detect', 'exp', "image0.jpg"))
     os.rmdir(os.path.join('runs', 'detect', 'exp'))
-  if len(os.listdir(os.path.join('static', 'images'))) == 2:
+  elif len(os.listdir(os.path.join('static', 'images'))) == 2:
      os.remove(os.path.join('static', 'images', 'image0.jpg'))
      os.rmdir(os.path.join('static', 'images', 'exp'))
 
